@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q2 - Numeros Aleatorios</title>
+</head>
+<style>
+    .minha-tabela {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid black;
+    }
+    .minha-tabela th, .minha-tabela td {
+        border: 1px solid black;
+        padding: 8px; /* um espacinho para não grudar o texto na borda */
+        text-align: left;
+    }
+</style>
+<body>
+    <div id="tabela"></div>
+
+    <script>
+        var nums = [];
+        var pares = [];
+        var impares = [];
+        var todosOrd = [];
+        var paresMenor50 = [];
+        var imparesOrd = [];
+
+        for (var i=0; i<10; i++) { nums.push( Math.floor(Math.random()*100) + 1 ); } // todos os numeros
+
+        for (var i=0; i<nums.length; i++) { if (nums[i] % 2 === 0) pares.push(nums[i]); } // numeros pares
+
+        for (var i=0; i<nums.length; i++) { if (nums[i] % 2 !== 0) impares.push(nums[i]); } // numeros impares
+
+        todosOrd = nums.slice().sort((a, b) => a - b); // numeros ordenados
+
+        for (var i=0; i<pares.length; i++) { if (pares[i] < 50) paresMenor50.push(pares[i]); } // numeros pares menores que 50
+
+        imparesOrd = impares.slice().sort((a, b) => a - b); // numeros impares ordenados
+
+        var html = '<table class="minha-tabela"><tr><th>Descrição</th><th>Valores</th></tr>';
+        html += '<tr><td>Todos os números</td><td>' + nums + '</td></tr>';
+        html += '<tr><td>Apenas pares</td><td>' + pares + '</td></tr>';
+        html += '<tr><td>Apenas ímpares</td><td>' + impares + '</td></tr>';
+        html += '<tr><td>Todos ordenados</td><td>' + todosOrd + '</td></tr>';
+        html += '<tr><td>Pares < 50 ordenados</td><td>' + paresMenor50 + '</td></tr>';
+        html += '<tr><td>Ímpares ordenados</td><td>' + imparesOrd + '</td></tr>';
+        html += '</table>';
+        
+        document.getElementById('tabela').innerHTML = html;
+
+    </script>
+</body>
+</html>
