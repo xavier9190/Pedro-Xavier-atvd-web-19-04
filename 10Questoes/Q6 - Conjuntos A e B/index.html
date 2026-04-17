@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q6 - Conjuntos A e B</title>
+    <style>
+     
+    </style>
+</head>
+<body>
+    <input type="text" id="vetorA" placeholder="Vetor A *max 10 elementos">
+    <input type="text" id="vetorB" placeholder="Vetor B *max 10 elementos">
+    <button onclick="
+
+    //----------------------------------------------------
+        var vetorA = document.getElementById('vetorA').value.split(',');
+        var vetorB = document.getElementById('vetorB').value.split(',');
+        var saida = document.getElementById('saida');
+
+        var intersecao = [];
+        var uniao = vetorA.slice();
+        var diferenca = [];
+
+        for (var i=0; i<vetorA.length; i++) {
+            for (var j=0; j<vetorB.length; j++) {
+                if (vetorA[i] === vetorB[j]) { var jaExiste = false;
+                    for (var k=0; k<intersecao.length; k++) if (intersecao[k] === vetorA[i]) jaExiste = true;
+                    if (!jaExiste) intersecao.push(vetorA[i]);
+                }
+            }
+        }
+
+        for (var i=0; i<vetorB.length; i++) {
+            var tem = false;
+            for (var j=0; j<uniao.length; j++) 
+            if (uniao[j] === vetorB[i]) tem = true;
+            if (!tem) uniao.push(vetorB[i]);
+        }
+
+        for (var i=0; i<vetorA.length; i++) {
+            var tem = false;
+            for (var j=0; j<vetorB.length; j++) if (vetorB[j] === vetorA[i]) tem = true;
+            if (!tem) diferenca.push(vetorA[i]);
+        }
+
+        var AcontidoB = true;
+        for (var i=0; i<vetorA.length; i++) {
+            var achou = false;
+            for (var j=0; j<vetorB.length; j++) if (vetorA[i] === vetorB[j]) achou = true;
+            if (!achou) AcontidoB = false;
+        }
+        var BcontidoA = true;
+        for (var i=0; i<vetorB.length; i++) {
+            var achou = false;
+            for (var j=0; j<vetorA.length; j++) if (vetorB[i] === vetorA[j]) achou = true;
+            if (!achou) BcontidoA = false;
+        }
+
+        
+        var html = '';
+        html += '<h3>Vetor A = [' + vetorA + ']</h3>';
+        html += '<h3>Vetor B = [' + vetorB + ']</h3>';
+        html += '<h3>Interseção = [' + intersecao + ']</h3>';
+        html += '<h3>União = [' + uniao + ']</h3>';
+        html += '<h3>Diferença (A - B) = [' + diferenca + ']</h3>';
+        html += '<h3>A contido em B? ' + (AcontidoB ? 'Sim' : 'Não') + '</h3>';
+        html += '<h3>B contido em A? ' + (BcontidoA ? 'Sim' : 'Não') + '</h3>';
+        
+        saida.innerHTML = html;
+
+    //----------------------------------------------------
+
+    ">Seguir</button>
+
+    <div id="saida"></div>
+
+    
+</body>
+</html>

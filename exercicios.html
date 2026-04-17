@@ -182,8 +182,8 @@
     <!-- ========== EXERCÍCIO 6 ========== -->
     <h2>6. Conjuntos A e B (fixos)</h2>
     <button onclick="
-        var A = [2,5,8,3,9];
-        var B = [3,8,1,5,7];
+        var A = [1,2,3,4,5,6];
+        var B = [1,2,3];
         // interseção
         var inter = [];
         for (var i=0; i<A.length; i++) {
@@ -198,7 +198,8 @@
         var uniao = A.slice();
         for (var i=0; i<B.length; i++) {
             var tem = false;
-            for (var j=0; j<uniao.length; j++) if (uniao[j] === B[i]) tem = true;
+            for (var j=0; j<uniao.length; j++) 
+            if (uniao[j] === B[i]) tem = true;
             if (!tem) uniao.push(B[i]);
         }
         // diferença A - B
