@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q5 - Somatório</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container{
+            border: 1px solid #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #f0f0f0;
+            max-width: 500px;
+        }
+    </style>
+</head>
+    
+<body>
+    <div class="container">
+    <input type="text" id="numero">
+        <button onclick="
+            var n = document.getElementById('numero').value;
+            var s = 0;
+            var numerador = 2;
+            var denominador = 3;
+            var contadorSinal = 1; 
+            var resultadoTexto = 'S = ';
+
+            var i = 1;
+            while (i <= n) {
+                var termo = numerador / denominador;
+                var sinalAtual = '';
+
+                if (contadorSinal % 3 == 0) {
+                    s = s + termo;
+                    sinalAtual = ' + ' + numerador + '/' + denominador;
+                } else {
+                    s = s - termo;
+                    sinalAtual = ' - ' + numerador + '/' + denominador;
+                }
+
+                resultadoTexto += sinalAtual;
+                
+                numerador++;
+                denominador += 2;
+                contadorSinal++;
+                i++;
+            }
+            var html = '<p>' + resultadoTexto + '</p>';
+        html += '<p>S = ' + s.toFixed(2) + '</p>';
+            document.getElementById('saida').innerHTML = html;
+        
+    ">Calcular</button>
+
+
+        <div id="saida"></div>
+    </div>
+
+</body>
+</html>
