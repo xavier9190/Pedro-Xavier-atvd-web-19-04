@@ -4,7 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q4 - Locação Wayne</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #saida{
+            border: 1px solid #000;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
+    
 <body>
     <div id="saida"></div>
 
@@ -18,7 +35,14 @@
         var distancia = 295;
         var valorGasolina = 0.75;
 
-        
+        var html =  '<p>Distância: ' + distancia + ' km | Gasolina: $ ' + valorGasolina + '</p>';
+        html += '<p>Morcego: ' + consumoMorcego + ' km/l | Locação: $ ' + locacaoMorcego + '</p>';
+        html += '<p>Litros necessários: ' + (distancia / consumoMorcego).toFixed(2) + ' | somando a locação: $ ' + (locacaoMorcego + (distancia / consumoMorcego) * valorGasolina).toFixed(2) + '</p>';
+
+        html += '<p>Vampiro: ' + consumoVampiro + ' km/l | Locação: $ ' + locacaoVampiro + '</p>'
+        html += '<p>Litros necessários: ' + (distancia / consumoVampiro).toFixed(2) + ' | somando a locação: $ ' + (locacaoVampiro + (distancia / consumoVampiro) * valorGasolina).toFixed(2) + '</p>';
+
+        document.getElementById('saida').innerHTML = html;
     </script>
 </body>
 </html>
