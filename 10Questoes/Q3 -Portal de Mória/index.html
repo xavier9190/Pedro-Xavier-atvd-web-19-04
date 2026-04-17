@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q3 - Portal de Mória</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        table {
+            width: 100%;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+    </style>
 </head>
 <body>
     <div id="saida"></div>
@@ -22,13 +44,17 @@
             tentativas++;
             if (palavras[idChute] == PalavraCorreta) achou = true;
         }
-        var txt = 'Foram necessárias ' + tentativas + ' tentativas para encontrar "' + PalavraCorreta + '".\n';
-        txt += 'Frequência de cada palavra:\n';
+        
+        var html = '<h2>Foram necessárias <span class="destaque">' + tentativas + '</span> tentativas para encontrar a palavra secreta "<span class="destaque">' + PalavraCorreta + '</span>".</h2>';
+        html += '<table>';
+        html += '<thead><tr><th>Palavra</th><th>Frequência de aparições</th></tr></thead>';
+        html += '<tbody>';
         for (var i=0; i<palavras.length; i++) {
-            txt += palavras[i] + ': ' + freq[i] + '\n';
+            html += '<tr><td>' + palavras[i] + '</td><td>' + freq[i] + '</td></tr>';
         }
+        html += '</tbody></table>';
 
-        document.getElementById('saida').innerText = txt;
+        document.getElementById('saida').innerHTML = html;
     </script>
 </body>
 </html>
