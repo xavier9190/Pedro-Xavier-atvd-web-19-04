@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q8 - Potência</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    #saida, #container {
+        margin-top: 20px;
+    }
+    input, button {
+        padding: 10px;
+        font-size: 20px;
+    }
+</style>
+<body>
+    <div id="container">
+        <input type="text" id="base">
+        <input type="text" id="expoente">
+        <button onclick="
+            var base = document.getElementById('base').value;
+            var expoente = document.getElementById('expoente').value;
+            var potencia = 1;
+            for (var i=1; i<=expoente; i++) {
+                potencia = potencia * base;
+            }
+            document.getElementById('saida').innerHTML = base + '<sup>' + expoente + '</sup>' + ' = ' + potencia;
+        ">Calcular</button>
+    </div>
+    <div id="saida"></div>
+</body>
+</html>
