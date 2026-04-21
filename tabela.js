@@ -12,7 +12,7 @@ for (var i = 0; i < 100; i++) {
     for (var j = 0; j < 1000; j++) {
         var celula = document.createElement("td");
         var numero = Math.floor(Math.random() * 100) + 1;
-        celula.innerText = numero;
+        celula.innerText = numero < 10 ? "0" + numero : numero;
         celula.style.border = "1px solid black";
         if (numero % 2 === 0) {
             celula.style.backgroundColor = "lightblue";
