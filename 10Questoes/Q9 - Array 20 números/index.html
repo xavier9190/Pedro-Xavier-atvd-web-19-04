@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q9 - Array 20 números</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    #saida, #container {
+        margin-top: 20px;
+    }
+    input, button {
+        padding: 10px;
+        font-size: 20px;
+    }
+</style>
+<body>
+        <button onclick="
+            var tabela = document.getElementById('tabela');
+            tabela.innerHTML = ''; 
+            
+            var numerosOriginal = [];
+            for (var i = 0; i < 20; i++) {
+                numerosOriginal.push(Math.floor(Math.random() * 100));
+            }
+            
+            document.getElementById('array').innerHTML = '<h3>Array original:<br>' + numerosOriginal.join(', ') + '</h3><h3>Array ordenado:</h3>';
+            
+            var numeros = numerosOriginal.slice();
+            
+            for (var i = 0; i < numeros.length; i++) {
+                for (var j = 0; j < numeros.length - 1 - i; j++) {
+                    if (numeros[j] > numeros[j + 1]) {
+                        var temp = numeros[j];
+                        numeros[j] = numeros[j + 1];
+                        numeros[j + 1] = temp;
+                    }
+                }
+            }
+
+            var linha = document.createElement('tr');
+            for (var i = 0; i < numeros.length; i++) {
+                var celula = document.createElement('td');
+                var numero = numeros[i];
+                celula.innerText = numero;
+                celula.style.border = '1px solid black';
+                celula.style.padding = '10px 15px';
+                celula.style.color = 'white';
+                
+                if (numero % 2 === 0) {
+                    celula.style.backgroundColor = 'blue';
+                } else {
+                    celula.style.backgroundColor = 'green';
+                }
+                linha.appendChild(celula);
+            }
+
+            tabela.appendChild(linha);
+        ">Gerar números na Tabela
+        
+        </button>
+
+    <div id="array"></div>
+
+    <table id="tabela" style="margin-top: 30px; border-collapse: collapse;"></table>
+</body>
+</html>

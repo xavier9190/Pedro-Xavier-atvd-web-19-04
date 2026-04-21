@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1 - Darkseid x Fenix</title>
+</head>
+<body>
+    
+<h2>Batalha: Darkseid vs Fênix</h2>
+
+<label>Escolha:</label>
+<select id="parimpar">
+    <option value="par">Par</option>
+    <option value="impar">Ímpar</option>
+</select>
+
+<br><br>
+
+<button onclick="jogar()">Iniciar Combate</button>
+
+<h3>Resultado</h3>
+<div id="resultado"></div>
+
+<script>
+
+function jogar(){
+
+    var escolha = document.getElementById("parimpar").value;
+
+    var numero = Math.floor(Math.random()*10);
+
+    var resultado = "";
+
+    resultado = resultado + "Número sorteado: " + numero + "<br>";
+
+    var vencedorParImpar = "";
+
+    if(numero % 2 == 0){
+        resultado = resultado + "Resultado: PAR <br>";
+        vencedorParImpar = "par";
+    }else{
+        resultado = resultado + "Resultado: IMPAR <br>";
+        vencedorParImpar = "impar";
+    }
+
+    var defensor = "";
+    var atacante = "";
+
+    if(vencedorParImpar == escolha){
+        defensor = "Jogador";
+        atacante = "Computador";
+    }else{
+        defensor = "Computador";
+        atacante = "Jogador";
+    }
+
+    resultado = resultado + "<br>Defensor: " + defensor + "<br>";
+    resultado = resultado + "Atacante: " + atacante + "<br><br>";
+
+    var pontosJogador = 0;
+    var pontosComputador = 0;
+
+    for(var i = 1; i <= 3; i++){
+
+        var dadoJogador = Math.floor(Math.random()*6) + 1;
+        var dadoComputador = Math.floor(Math.random()*6) + 1;
+
+        resultado = resultado + "Rodada " + i + "<br>";
+        resultado = resultado + "Jogador: " + dadoJogador + "<br>";
+        resultado = resultado + "Computador: " + dadoComputador + "<br>";
+
+        if(dadoJogador > dadoComputador){
+            pontosJogador = pontosJogador + 1;
+            resultado = resultado + "Ponto para Jogador<br><br>";
+        }
+        else if(dadoComputador > dadoJogador){
+            pontosComputador = pontosComputador + 1;
+            resultado = resultado + "Ponto para Computador<br><br>";
+        }
+        else{
+
+            if(defensor == "Jogador"){
+                pontosJogador = pontosJogador + 1;
+                resultado = resultado + "Empate - ponto para defensor (Jogador)<br><br>";
+            }else{
+                pontosComputador = pontosComputador + 1;
+                resultado = resultado + "Empate - ponto para defensor (Computador)<br><br>";
+            }
+
+        }
+
+    }
+
+    resultado = resultado + "<br>Pontos Jogador: " + pontosJogador + "<br>";
+    resultado = resultado + "Pontos Computador: " + pontosComputador + "<br><br>";
+
+    if(pontosJogador > pontosComputador){
+        resultado = resultado + "VENCEDOR: JOGADOR";
+    }
+    else if(pontosComputador > pontosJogador){
+        resultado = resultado + "VENCEDOR: COMPUTADOR";
+    }
+    else{
+        resultado = resultado + "EMPATE";
+    }
+
+    document.getElementById("resultado").innerHTML = resultado;
+
+}
+
+</script>
+
+</body>
+</html>

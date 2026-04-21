@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+<h2>Manipular Array</h2>
+
+<label>Número:</label>
+<input type="number" id="numero"><br><br>
+
+<label>Índice:</label>
+<input type="number" id="indice"><br><br>
+
+<label>Operação:</label>
+<select id="opcao">
+    <option value="adicionar">Adicionar</option>
+    <option value="substituir">Substituir</option>
+    <option value="excluir">Excluir</option>
+</select><br><br>
+
+<button onclick="executar()">Executar</button>
+
+<h3>Resultado</h3>
+<div id="resultado"></div>
+
+<script>
+
+var arr = [];
+for (var i = 0; i < 20; i++) {
+    arr[i] = Math.floor(Math.random() * 100);
+}
+function executar() {
+
+    var numero = document.getElementById("numero").value;
+    var indice = document.getElementById("indice").value;
+    var opcao = document.getElementById("opcao").value;
+
+    if (indice < 0 || indice >= arr.length) {
+        document.getElementById("resultado").innerHTML = "Indice inválido";
+        return;
+    }
+
+    if (opcao == "adicionar") {
+
+        for (var i = arr.length; i > indice; i--) {
+            arr[i] = arr[i - 1];
+        }
+
+        arr[indice] = numero;
+    }
+
+    else if (opcao == "substituir") {
+
+        arr[indice] = numero;
+    }
+
+    else if (opcao == "excluir") {
+
+        for (var i = indice; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+
+        arr.length = arr.length - 1;
+    }
+
+    var texto = "Array: ";
+
+    for (var i = 0; i < arr.length; i++) {
+        texto = texto + arr[i] + " ";
+    }
+
+    document.getElementById("resultado").innerHTML = texto;
+}
+
+var textoInicial = "Array inicial: ";
+for (var i = 0; i < arr.length; i++) {
+    textoInicial = textoInicial + arr[i] + " ";
+}
+document.getElementById("resultado").innerHTML = textoInicial;
+
+</script>
+</body>
+
+</html>
