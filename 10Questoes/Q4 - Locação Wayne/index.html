@@ -5,44 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q4 - Locação Wayne</title>
     <style>
-        body{
+        body {
+            background-color: #2b2b2b;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-        }
-        #saida{
-            border: 1px solid #000;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
             padding: 20px;
-            border-radius: 10px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-            font-weight: bold;
+            box-sizing: border-box;
+        }
+        .card {
+            background-color: #3d3d3d;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            overflow-x: auto;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            color: #ffffff;
+        }
+        th, td {
+            border: 1px solid #555;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #555;
         }
     </style>
 </head>
     
 <body>
-    <div id="saida"></div>
+    <div class="card">
+        <div id="saida"></div>
 
-    <script>
-        var consumoMorcego = 16;
-        var consumoVampiro = 11;
+        <script>
+            var consumoMorcego = 16;
+            var consumoVampiro = 11;
 
-        var locacaoMorcego = 300;
-        var locacaoVampiro = 500;
+            var locacaoMorcego = 300;
+            var locacaoVampiro = 500;
 
-        var distancia = 295;
-        var valorGasolina = 0.75;
+            var distancia = 295;
+            var valorGasolina = 0.75;
 
-        var html =  '<p>Distância: ' + distancia + ' km | Gasolina: $ ' + valorGasolina + '</p>';
-        html += '<p>Morcego: ' + consumoMorcego + ' km/l | Locação: $ ' + locacaoMorcego + '</p>';
-        html += '<p>Litros necessários: ' + (distancia / consumoMorcego).toFixed(2) + ' | somando a locação: $ ' + (locacaoMorcego + (distancia / consumoMorcego) * valorGasolina).toFixed(2) + '</p>';
+            var html =  '<p>Distância: ' + distancia + ' km | Gasolina: $ ' + valorGasolina + '</p>';
+            html += '<p>Morcego: ' + consumoMorcego + ' km/l | Locação: $ ' + locacaoMorcego + '</p>';
+            html += '<p>Litros necessários: ' + (distancia / consumoMorcego).toFixed(2) + ' | somando a locação: $ ' + (locacaoMorcego + (distancia / consumoMorcego) * valorGasolina).toFixed(2) + '</p>';
 
-        html += '<p>Vampiro: ' + consumoVampiro + ' km/l | Locação: $ ' + locacaoVampiro + '</p>'
-        html += '<p>Litros necessários: ' + (distancia / consumoVampiro).toFixed(2) + ' | somando a locação: $ ' + (locacaoVampiro + (distancia / consumoVampiro) * valorGasolina).toFixed(2) + '</p>';
+            html += '<p>Vampiro: ' + consumoVampiro + ' km/l | Locação: $ ' + locacaoVampiro + '</p>'
+            html += '<p>Litros necessários: ' + (distancia / consumoVampiro).toFixed(2) + ' | somando a locação: $ ' + (locacaoVampiro + (distancia / consumoVampiro) * valorGasolina).toFixed(2) + '</p>';
 
-        document.getElementById('saida').innerHTML = html;
-    </script>
+            document.getElementById('saida').innerHTML = html;
+        </script>
+    </div>
 </body>
 </html>
